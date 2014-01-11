@@ -1,29 +1,37 @@
 <p>
-    <i>( Describe task in general )</i>
+    You are standing next to a machine with two numeric inputs <strong>x</strong> and <strong>y</strong>,
+    and a single numeric output.
+    It is known that the machine evaluates an expression using <strong>x</strong>, <strong>y</strong>,
+    the operators <strong>+&nbsp;–&nbsp;*&nbsp;/</strong> and <strong>brackets</strong>.
+    You should recover the expression by using the machine on inputs of your choice in several turns.
+    <strong>x</strong>, <strong>y</strong> and the result are integers. There is using the integer division (<strong>/</strong>).
+    For the division by zero the result will be <strong>"ZeroDivisionError"</strong>.
 </p>
 
 <p>
-    Sum two passed ints
-</p>
-
-<p style="text-align: center;">
-    <img class="for_info_only" title="example" src="{{MEDIA}}example.png" alt="example" width="392px"/>
-    <img class="for_editor_only" title="example" src="{{MEDIA}}example.png" alt="example" width="380px"/>
-</p>
-
-<p><i>( Explain input and output values )</i></p>
-<p>
-    <strong>Input: </strong> Two arguments. Both are int
+    Equivalent expressions will be accepted by the grader.
+    For this the machine evaluates your expression and the hidden expression several times with random values.
 </p>
 
 <p>
-    <strong>Output: </strong> Int. 
+    In each step your function get a list with data from the past steps.
+    Each element is a list of three numbers -- <strong>x</strong>(int), <strong>y</strong>(int) and <strong>output</strong>(int or "ZeroDivisionError").
+</p>
+
+<p>
+    The function should return a list with three elements -- your guess as an expression string, <strong>x</strong> and <strong>y</strong>.
+</p>
+<p>
+    <strong>Input: </strong> A list with data from the past steps.
+</p>
+
+<p>
+    <strong>Output: </strong> A list with three elements -- your guess as an expression string, <strong>x</strong> and <strong>y</strong>.
 </p>
 
 
 
 <div class="for_info_only">
-    <p><i>( Put some usage examples )</i></p>
     <p>
         <strong>Example:</strong>
     </p>
