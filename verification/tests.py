@@ -9,28 +9,40 @@ Each test is dict with
 
 
 TESTS = {
-    "Basics": [
+    "01":
         {
-            "input": [3, 2],
-            "answer": 5,
-            "explanation": "3+2=?"
+            "expression": "x+y",
+            "answer": "x+y"
         },
+    "02":
         {
-            "input": [5, 7],
-            "answer": 12,
-            "explanation": "5+7=?"
-        }
-    ],
-    "Extra": [
-        {
-            "input": [6, 3],
-            "answer": 9,
-            "explanation": "6+3=?"
+            "expression": "x-y",
+            "answer": "x-y"
         },
+    "03":
         {
-            "input": [6, 7],
-            "answer": 13,
-            "explanation": "6+7=?"
-        }
-    ]
+            "expression": "x*y",
+            "answer": "x*y"
+        },
+    "04":
+        {
+            "expression": "x//y",
+            "answer": "x/y"
+        },
+    "05":
+        {
+            "expression": "x+1",
+            "answer": "x+1"
+        },
+    "06":
+        {
+            "expression": "(x+2)*y",
+            "answer": "(x+2)*y"
+        },
+    "07":
+        {
+            "expression": "(x+y)//x",
+            "answer": "(x+y)/x"
+        },
+
 }
