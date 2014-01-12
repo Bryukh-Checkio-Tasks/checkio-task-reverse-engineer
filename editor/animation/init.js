@@ -57,34 +57,28 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
             var userResult = data.out;
             var result = data.ext["result"];
             var result_addon = data.ext["result_addon"];
+            var isWin = data.ext["is_win"];
 
 
             //if you need additional info from tests (if exists)
-            var explanation = data.ext["explanation"];
+//            var explanation = data.ext["explanation"];
 
-            $content.find('.output').html('&nbsp;Your result:&nbsp;' + JSON.stringify(userResult));
+            $content.find('.output').html('&nbsp;Your result:&nbsp;' + ext.JSON.encode(userResult));
 
             if (!result) {
-                $content.find('.call').html('Fail: checkio(' + JSON.stringify(checkioInput) + ')');
-                $content.find('.answer').html('Right result:&nbsp;' + JSON.stringify(rightResult));
+                $content.find('.call').html('Fail: checkio(' + ext.JSON.encode(checkioInput) + ')');
+                $content.find('.answer').html(result_addon + "<br>Hidden expression was:<br>" + rightResult);
                 $content.find('.answer').addClass('error');
                 $content.find('.output').addClass('error');
                 $content.find('.call').addClass('error');
             }
             else {
-                $content.find('.call').html('Pass: checkio(' + JSON.stringify(checkioInput) + ')');
+                $content.find('.call').html('Pass: checkio(' + ext.JSON.encode(checkioInput) + ')');
                 $content.find('.answer').remove();
             }
-            //Dont change the code before it
-
-            //Your code here about test explanation animation
-            //$content.find(".explanation").html("Something text for example");
-            //
-            //
-            //
-            //
-            //
-
+            if (isWin) {
+                $content.find('.output').html('&nbsp;Your guess is correct:<br>' + ext.JSON.encode(userResult[0]) + "<br>Hidden expression was:<br>" + rightResult);
+            }
 
             this_e.setAnimationHeight($content.height() + 60);
 

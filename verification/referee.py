@@ -25,22 +25,29 @@ def process_referee(referee_data, user_result):
         return referee_data
     if (not isinstance(user_result, (list, tuple)) or len(user_result) != 3 or
             not isinstance(user_result[1], int) or not isinstance(user_result[2], int) or
-            isinstance(user_result[0], str)):
+            not isinstance(user_result[0], str)):
         referee_data.update({"result": False, "result_addon": "The function should return a list with three values."})
         return referee_data
     guess, x, y = user_result
+    guess = guess.replace("/", "//")
     referee_data["guess"] = guess
-    if not re.match(r"\A[xy +*/()-]*\Z", "x +*/(y)?", guess):
+    if not re.match(r"\A[xy +*/()-]*\Z", guess):
         referee_data.update({"result": False, "result_addon": "Your guess does not look like an expression."})
         return referee_data
+    try:
+        result_expr = eval(expression)
+    except ZeroDivisionError:
+        result_expr = "ZeroDivisionError"
+
     try:
         result = eval(guess)
     except ZeroDivisionError:
         result = "ZeroDivisionError"
     except Exception as er:
-        referee_data.update({"result": False, "result_addon": "The error {0}.".format(er)})
+        referee_data.update({"result": False, "result_addon": "We got the error when evaluate your expression: {0}.".format(er)})
         return referee_data
-    referee_data["input"].append([x, y, result])
+
+    referee_data["input"].append([x, y, result_expr])
     referee_data.update({"result": True, "result_addon": "Next Step"})
     return referee_data
 
