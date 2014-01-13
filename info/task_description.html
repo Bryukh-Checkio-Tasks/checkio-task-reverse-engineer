@@ -3,18 +3,18 @@
     and a single numeric output.
     It is known that the machine evaluates an expression using <strong>x</strong>, <strong>y</strong>,
     the operators <strong>+&nbsp;–&nbsp;*&nbsp;/</strong> and <strong>brackets</strong>.
-    You should recover the expression by using the machine on inputs of your choice in several turns.
-    <strong>x</strong>, <strong>y</strong> and the result are integers. There is using the integer division (<strong>/</strong>).
-    For the division by zero the result will be <strong>"ZeroDivisionError"</strong>.
+    You should recover the expression by using the machine with inputs of your choice in several turns.
+    <strong>x</strong>, <strong>y</strong> and the result are integers. You can use the integer division (<strong>/</strong>).
+    When dividing by zero, the result will evaluate to <strong>"ZeroDivisionError"</strong>.
 </p>
 
 <p>
     Equivalent expressions will be accepted by the grader.
-    For this the machine evaluates your expression and the hidden expression several times with random values.
+    For this the machine evaluates your expression and the hidden expression several times, with random values.
 </p>
 
 <p>
-    In each step your function get a list with data from the past steps.
+    In each step, your function gets a list with data from the past steps.
     Each element is a list of three numbers -- <strong>x</strong>(int), <strong>y</strong>(int) and <strong>output</strong>(int or "ZeroDivisionError").
 </p>
 
