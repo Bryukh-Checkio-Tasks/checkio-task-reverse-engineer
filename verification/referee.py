@@ -17,7 +17,7 @@ def initial_referee(data):
 
 
 def process_referee(referee_data, user_result):
-    expression = referee_data['expression']
+    expression = referee_data['answer']
 
     referee_data['step_count'] += 1
     if referee_data['step_count'] > MAX_STEP:
@@ -29,7 +29,7 @@ def process_referee(referee_data, user_result):
         referee_data.update({"result": False, "result_addon": "The function should return a list with three values."})
         return referee_data
     guess, x, y = user_result
-    guess = guess.replace("/", "//")
+    #guess = guess.replace("/", "//")
     referee_data["guess"] = guess
     if not re.match(r"\A[xy +*/()-]*\Z", guess):
         referee_data.update({"result": False, "result_addon": "Your guess does not look like an expression."})
@@ -56,7 +56,7 @@ def is_win_referee(referee_data):
     if not referee_data["result"]:
         return False
     guess = referee_data['guess']
-    expression = referee_data['expression']
+    expression = referee_data['answer']
     for _ in range(10):
         x, y = randint(-100, 100), randint(-100, 100)
         try:
