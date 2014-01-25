@@ -53,7 +53,6 @@ def process_referee(referee_data, user_result):
     output = [result_expr.numerator, result_expr.denominator] if result_expr != "ZeroDivisionError" else result_expr
     referee_data["input"].append([xu, yu, output])
     referee_data.update({"result": True, "result_addon": "Next Step"})
-    print("111111", referee_data)
     return referee_data
 
 
