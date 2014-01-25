@@ -63,21 +63,21 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
             //if you need additional info from tests (if exists)
 //            var explanation = data.ext["explanation"];
 
-            $content.find('.output').html('&nbsp;Your result:&nbsp;' + ext.JSON.encode(userResult));
+            $content.find('.output').html('&nbsp;Your guess:&nbsp;' + JSON.stringify(userResult));
 
             if (!result) {
-                $content.find('.call').html('Fail: checkio(' + ext.JSON.encode(checkioInput) + ')');
+                $content.find('.call').html('Fail: checkio(' + JSON.stringify(checkioInput) + ')');
                 $content.find('.answer').html(result_addon + "<br>Hidden expression was:<br>" + rightResult);
                 $content.find('.answer').addClass('error');
                 $content.find('.output').addClass('error');
                 $content.find('.call').addClass('error');
             }
             else {
-                $content.find('.call').html('Pass: checkio(' + ext.JSON.encode(checkioInput) + ')');
+                $content.find('.call').html('Pass: checkio(' + JSON.stringify(checkioInput) + ')');
                 $content.find('.answer').remove();
             }
             if (isWin) {
-                $content.find('.output').html('&nbsp;Your guess is correct:<br>' + ext.JSON.encode(userResult[0]) + "<br>Hidden expression was:<br>" + rightResult);
+                $content.find('.output').html('&nbsp;Your guess is correct:<br>' + JSON.stringify(userResult[0]) + "<br>Hidden expression was:<br>" + rightResult);
             }
 
             this_e.setAnimationHeight($content.height() + 60);

@@ -29,9 +29,9 @@ def process_referee(referee_data, user_result):
             not isinstance(user_result[0], str)):
         referee_data.update({"result": False, "result_addon": "The function should return a list with three values."})
         return referee_data
-    guess, x, y = user_result
-    x = Fraction(x)
-    y= Fraction(y)
+    guess, xu, yu = user_result
+    x = Fraction(xu)
+    y = Fraction(yu)
     #guess = guess.replace("/", "//")
     referee_data["guess"] = guess
     if not re.match(r"\A[xy +*/()-]*\Z", guess):
@@ -50,9 +50,10 @@ def process_referee(referee_data, user_result):
         referee_data.update({"result": False, "result_addon": "We got the error when evaluate your expression: {0}.".format(er)})
         return referee_data
 
-
-    referee_data["input"].append([x, y, [result_expr.numerator, result_expr.denominator]])
+    output = [result_expr.numerator, result_expr.denominator] if result_expr != "ZeroDivisionError" else result_expr
+    referee_data["input"].append([xu, yu, output])
     referee_data.update({"result": True, "result_addon": "Next Step"})
+    print("111111", referee_data)
     return referee_data
 
 
