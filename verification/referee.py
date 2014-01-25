@@ -1,3 +1,4 @@
+from fractions import Fraction
 from math import hypot
 from random import randint
 from checkio.signals import ON_CONNECT
@@ -29,6 +30,8 @@ def process_referee(referee_data, user_result):
         referee_data.update({"result": False, "result_addon": "The function should return a list with three values."})
         return referee_data
     guess, x, y = user_result
+    x = Fraction(x)
+    y= Fraction(y)
     #guess = guess.replace("/", "//")
     referee_data["guess"] = guess
     if not re.match(r"\A[xy +*/()-]*\Z", guess):
@@ -47,7 +50,8 @@ def process_referee(referee_data, user_result):
         referee_data.update({"result": False, "result_addon": "We got the error when evaluate your expression: {0}.".format(er)})
         return referee_data
 
-    referee_data["input"].append([x, y, result_expr])
+
+    referee_data["input"].append([x, y, [result_expr.numerator, result_expr.denominator]])
     referee_data.update({"result": True, "result_addon": "Next Step"})
     return referee_data
 
@@ -58,17 +62,16 @@ def is_win_referee(referee_data):
     guess = referee_data['guess']
     expression = referee_data['answer']
     for _ in range(10):
-        x, y = randint(-100, 100), randint(-100, 100)
-        try:
-            result_guess = eval(guess)
-        except ZeroDivisionError:
-            result_guess = "ZeroDivisionError"
-
-        try:
-            result_expr = eval(expression)
-        except ZeroDivisionError:
-            result_expr = "ZeroDivisionError"
-
+        result_guess = 0
+        result_expr = 1
+        for __ in range(100):
+            x, y = Fraction(randint(-100, 100)), Fraction(randint(-100, 100))
+            try:
+                result_guess = eval(guess)
+                result_expr = eval(expression)
+            except ZeroDivisionError:
+                continue
+            break
         if result_guess != result_expr:
             return False
     return True
