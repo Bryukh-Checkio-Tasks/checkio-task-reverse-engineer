@@ -44,24 +44,3 @@ if __name__ == '__main__':
             break
     else:
         print("Fail")
-
-
-def is_win_referee(referee_data):
-    if not referee_data["result"]:
-        return False
-    guess = referee_data['guess']
-    expression = referee_data['answer']
-    for _ in range(10):
-        result_guess = 0
-        result_expr = 1
-        for __ in range(100):
-            x, y = Fraction(randint(-100, 100)), Fraction(randint(-100, 100))
-            try:
-                result_guess = eval(guess)
-                result_expr = eval(expression)
-            except ZeroDivisionError:
-                continue
-            break
-        if result_guess != result_expr:
-            return False
-    return True
