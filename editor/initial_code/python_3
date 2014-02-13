@@ -5,10 +5,10 @@ def checkio(steps):
 #It's "light" version of the grader
 #The hidden expression should be correct (non x/(y-y))
 if __name__ == '__main__':
-    from fractions import Fraction
-    from random import randint
-    
-    def testit(hidden_expression, checkio):
+    def test_it(hidden_expression, solver):
+        from fractions import Fraction
+        from random import randint
+
         def check_is_right(guess, expression):
             for _ in range(10):
                 result_guess = 0
@@ -25,10 +25,9 @@ if __name__ == '__main__':
                     return False
             return True
     
-        is_win = False
         input_data = []
         for step in range(50):
-            guess, x_real, y_real = checkio(input_data)
+            user_guess, x_real, y_real = solver(input_data)
             x = Fraction(x_real)
             y = Fraction(y_real)
             try:
@@ -37,10 +36,12 @@ if __name__ == '__main__':
             except ZeroDivisionError:
                 output = "ZeroDivisionError"
             input_data.append([x_real, y_real, output])
-            if check_is_right(guess, hidden_expression):
+            if check_is_right(user_guess, hidden_expression):
                 return True
         else:
             return False
-            
-        
-    assert testit("x*y", checkio)
+
+    assert test_it("x+y", checkio), "x+y"
+    assert test_it("x*y", checkio), "x*y"
+    assert test_it("x-y", checkio), "x-y"
+    assert test_it("x/y", checkio), "x/y"
