@@ -1,21 +1,21 @@
 <p>
-    You are standing next to a machine with two numeric inputs <strong>x</strong> and <strong>y</strong>,
-    and a single numeric output.
+    You are standing next to a math machine which takes two numerical inputs <strong>x</strong> and <strong>y</strong>,
+    and has a single numerical output.
     It is known that the machine evaluates an expression using <strong>x</strong>, <strong>y</strong>,
     the operators <strong>+&nbsp;–&nbsp;*&nbsp;/</strong> and <strong>brackets</strong>.
-    You should recover the expression by using the machine with inputs of your choice in several turns.
-    <strong>x</strong>, <strong>y</strong> and the result are integers.
+    You should recover the expression by using the machine and the inputs of your choice over several turns.
+    <strong>x</strong>, <strong>y</strong> and the result you receive are integers.
     The machine uses real division(<strong>/</strong>) in the expression.
     When dividing by zero, the result will evaluate to <strong>"ZeroDivisionError"</strong>.
 </p>
 
 <p>
     Equivalent expressions will be accepted by the grader.
-    For this the machine evaluates your expression and the hidden expression several times, with random values.
+    For this the machine evaluates your expression and the hidden expression several times using random values.
 </p>
 
 <p>
-    In each step, your function gets a list with data from the past steps.
+    In each step your function gets a list with data from the past steps.
     Each element is a list of three numbers -- <strong>x</strong>(int), <strong>y</strong>(int) and
     <strong>output</strong>(a fraction as a list or the string "ZeroDivisionError").
     The output is represented as a list with two integers - numerator and denominator.
@@ -46,8 +46,9 @@ checkio([[2, 2, [4, 1]], [3, 3, [6, 1]]])  # ["x+y", 5, 5]</pre>
 
 <p class="for_info_only">
     <strong>How it is used: </strong>
-    As you can see from the title this is an example of the reverse engineering.
-    This concept is using in cryptography and for analysis carious systems.
+    The concepts used in this task can help you to understand someone else’s code and add new techniques to your own repertoire.
+    In addition to this, reverse engineering comes in handy in cryptology where it can be used to decrypt coded information.
+
 </p>
 
 
